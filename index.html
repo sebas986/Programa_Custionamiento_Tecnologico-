@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuestionario de Ciudadanía Digital: El Desafío de la Mediación - I.E. María de los Ángeles Cano Márquez</title>
+    <!-- Animate.css CDN para transiciones suaves y dinámicas -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- FontAwesome para iconografía interactiva enriquecida -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="/Script.js"></script>
+    <link rel="stylesheet" href="/Style.css">
+</head>
+<body>
+
+<div class="container animate__animated animate__fadeIn">
+    <header>
+        <h1><i class="fa-solid fa-shield-halved"></i> Guardianes Digitales</h1>
+        <p>I.E. María de los Ángeles Cano Márquez </p>
+        <button class="audio-toggle" onclick="toggleMute()" title="Activar/Desactivar Efectos de Audio">
+            <i id="audio-icon" class="fa-solid fa-volume-high"></i>
+        </button>
+    </header>
+
+    <div class="game-panel">
+        
+        <!-- PANTALLA 1: INICIO CON OBJETIVO GENERAL -->
+        <div id="screen-intro" class="screen active animate__animated animate__fadeInUp">
+            
+            <!-- Banner Alusivo al Ecosistema Escolar Constructivo -->
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=80" alt="[Estudiantes usando computadoras y colaborando en equipo]" class="visual-banner">
+            
+            <!-- Bloque Destacado del Objetivo General del Programa -->
+            <div class="target-box">
+                <h3><i class="fa-solid fa-bullseye"></i> OBJETIVO GENERAL DEL PROGRAMA:</h3>
+                <p>Fortalecer en los estudiantes las competencias necesarias para reconocer, prevenir y actuar de manera responsable frente a situaciones relacionadas con la convivencia digital, el uso seguro de las tecnologías, la protección de la privacidad, la prevención del ciberacoso y la construcción de entornos virtuales respetuosos. A través de la reflexión sobre situaciones reales y simuladas, se busca que los participantes desarrollen habilidades de pensamiento crítico, empatía, resolución pacífica de conflictos y ciudadanía digital, promoviendo comportamientos que favorezcan la sana convivencia, el respeto por los demás y la protección de la integridad física, emocional y digital de todos los miembros de la comunidad educativa.</p>
+            </div>
+
+            <p class="intro-text">
+                Como parte del plan de convivencia institucional, asumirás la gestión directa de diferentes alertas digitales. Tu labor no será imponer castigos vacíos, sino educar en el cuidado de la huella personal, guiar a las partes en conflicto y mitigar los incidentes de forma madura.
+            </p>
+            
+            <div class="roles-info">
+                <h3><i class="fa-solid fa-scale-balanced"></i> Tu Compromiso de Liderazgo:</h3>
+                <p>Abordarás dilemas reales de ciberacoso, exclusión, pérdida de privacidad y desinformación. Busca siempre la vía restaurativa, el diálogo formativo y la protección de la integridad de la víctima.</p>
+            </div>
+            
+            <button class="btn" onclick="startGame()">
+                <i class="fa-solid fa-play"></i> Iniciar Programa de Entrenamiento
+            </button>
+        </div>
+
+        <!-- PANTALLA 2: JUEGO / CUESTIONARIO CON IMÁGENES POR CASO -->
+        <div id="screen-game" class="screen">
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span id="case-counter">Caso: 1 / 5</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fa-solid fa-star"></i>
+                    <span id="score-counter">Estrellas: 0</span>
+                </div>
+            </div>
+
+            <!-- Imagen Referencial Temática por Caso -->
+            <img id="case-image" src="" alt="[Ilustración del caso escolar]" class="visual-banner">
+
+            <div id="case-box-wrapper" class="case-box">
+                <div class="case-header-meta">
+                    <span class="case-tag" id="case-grade">Grado</span>
+                    <i id="case-category-icon" class="case-icon fa-solid fa-circle-nodes"></i>
+                </div>
+                <h2 class="case-title" id="case-title">Cargando caso...</h2>
+                <p class="case-desc" id="case-desc">Cargando contexto del problema...</p>
+            </div>
+
+            <ul class="options-list" id="options-container">
+                <!-- Se inyectan por JS -->
+            </ul>
+
+            <div id="feedback-container" class="feedback-box">
+                <i id="fb-icon-type" class="feedback-icon fa-solid fa-circle-check"></i>
+                <div class="feedback-content">
+                    <h4 id="feedback-title">Título del Resultado</h4>
+                    <p id="feedback-text">Análisis técnico-pedagógico del caso...</p>
+                </div>
+            </div>
+
+            <button class="btn" id="next-btn" onclick="handleNextStep()" disabled>
+                <i class="fa-solid fa-signature"></i> Evaluar Alternativa de Solución
+            </button>
+        </div>
+
+        <!-- PANTALLA 3: RESULTADOS / DIAGNÓSTICO FINAL -->
+        <div id="screen-results" class="screen animate__animated animate__zoomIn">
+            <div class="results-card">
+                <i class="fa-solid fa-square-poll-vertical" style="font-size: 52px; color: var(--primary);"></i>
+                <h2 style="margin-top: 10px; color: var(--primary);">Evaluación de Competencia Mediadora</h2>
+                <div class="score-big" id="final-score">0 / 15</div>
+                <div class="stars-display" id="final-stars">⭐⭐⭐⭐⭐</div>
+                <div class="final-desc" id="final-feedback">Calculando diagnóstico definitivo...</div>
+                <button class="btn" onclick="resetGame()">
+                    <i class="fa-solid fa-rotate-right"></i> Reiniciar Plataforma de Simulación
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
